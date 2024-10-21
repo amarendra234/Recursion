@@ -1,0 +1,23 @@
+class Solution {
+  public:
+    // You need to complete this function
+
+    // avoid space at the starting of the string in "move disk....."
+    long long TowerOfH(int n,int from,int to,int aux){
+        if(n==0){
+            return 0;
+        }
+        //move n-1 dist ot aux as target help of to
+        long long int x=TowerOfH(n-1,from,aux,to);
+        cout<<"move disk "<<n<<" from rod "<<from<<" to rod "<<to<<endl;
+        x+=1;
+        x+=TowerOfH(n-1,aux,to,from);
+        return x;
+        
+    }
+    long long toh(int n, int from, int to, int aux) {
+        // Your code here
+        long long int ans=TowerOfH(n,from,to,aux);
+        return ans;
+    }
+};
