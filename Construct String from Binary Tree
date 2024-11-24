@@ -1,0 +1,27 @@
+class Solution {
+public:
+    string tree_to_string(TreeNode* root){
+        if(root==NULL){
+            return "";
+        }
+        string res=to_string(root->val);
+        string left=tree_to_string(root->left);
+        string right=tree_to_string(root->right);
+        if(root->left==NULL and root->right==NULL){
+            return res;
+        }
+        if(root->left==NULL){
+           return  res + "()" + '(' + right + ')';
+        }else if(root->right==NULL){
+            return res + '(' + left + ')';
+        }else{
+             return res + '(' + left + ')' + '(' + right + ')';
+        }
+       
+    }
+    string tree2str(TreeNode* root) {
+      
+
+        return tree_to_string(root);
+    }
+};
